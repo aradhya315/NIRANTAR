@@ -1,0 +1,11 @@
+
+{
+  "name": "NIRANTAR - Emergency Readiness",
+  "short_name": "NIRANTAR",
+  "description": "An offline-first emergency preparedness system.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#101b2d"
+}

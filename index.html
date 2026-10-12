@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101b2d">
+  <title>NIRANTAR | Emergency Readiness</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#">
+      <span class="brand-icon">N</span>
+      <span>NIRANTAR<small>RESILIENCE SYSTEM</small></span>
+    </a>
+
+    <p class="nav-label">WORKSPACE</p>
+    <button class="nav-item active" data-view="overview">◫ &nbsp; Overview</button>
+    <button class="nav-item" data-view="checklist">☑ &nbsp; Readiness checklist</button>
+    <button class="nav-item" data-view="emergency">✚ &nbsp; Emergency plan</button>
+
+    <div class="sidebar-bottom">
+      <span class="status-dot"></span>
+      <span>Local workspace</span>
+      <small>Your browser</small>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">PERSONAL RESILIENCE</p>
+        <h1 id="page-title">Your readiness overview</h1>
+      </div>
+      <span class="offline-badge"><span class="status-dot"></span> LOCAL MODE</span>
+    </header>
+
+    <section class="welcome">
+      <div>
+        <p class="eyebrow light">PREPAREDNESS STARTS HERE</p>
+        <h2>Be ready. Stay prepared.</h2>
+        <p>Small steps today can make difficult situations easier to manage.</p>
+        <button class="primary-button" id="start-button">Build your readiness →</button>
+        
+        <button id="open-emergency-mode" type="button" class="emergency-launch-button">
+        Open Emergency Mode
+        </button>
+
+        
+        <button id="open-emergency-guides" type="button" class="guides-launch-button">
+        Browse Emergency Guides
+        </button>
+
+
+      </div>
+      <div class="hero-symbol" aria-hidden="true">N</div>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card">
+        <span class="stat-label">READINESS SCORE</span>
+        <div class="stat-number"><span id="score">0</span><span class="muted">/ 100</span></div>
+        <div class="progress-track"><div id="progress" class="progress-fill"></div></div>
+        <p class="stat-note">Based on completed checklist items</p>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">TASKS COMPLETED</span>
+        <div class="stat-number" id="completed-count">0</div>
+        <p class="stat-note" id="task-summary">Let's get started</p>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">SAVED ON THIS DEVICE</span>
+        <div class="stat-number small-number">Local</div>
+        <p class="stat-note">Your checklist stays in this browser</p>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel checklist-panel" id="checklist-section">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">YOUR ACTION PLAN</p>
+            <h3>Preparedness checklist</h3>
+          </div>
+          <span class="count-badge" id="item-count">0 items</span>
+        </div>
+        <p class="panel-description">Mark an item complete when you have checked it.</p>
+        <div id="checklist" class="checklist"></div>
+        <p class="save-note">✓ Changes are saved locally in your browser.</p>
+      </article>
+
+      <article class="panel plan-panel" id="emergency-section">
+        <p class="eyebrow">QUICK REFERENCE</p>
+        <h3>Your emergency plan</h3>
+        <p class="panel-description">Prepare these essentials before an emergency occurs.</p>
+
+        <div class="plan-item">
+          <span class="plan-icon">01</span>
+          <div><strong>Contacts</strong><p>Keep important numbers accessible.</p></div>
+        </div>
+        <div class="plan-item">
+          <span class="plan-icon">02</span>
+          <div><strong>Essential supplies</strong><p>Know what you have and what is missing.</p></div>
+        </div>
+        <div class="plan-item">
+          <span class="plan-icon">03</span>
+          <div><strong>Important documents</strong><p>Know where your essential records are stored.</p></div>
+        </div>
+
+        <div class="notice">
+          <strong>Important</strong>
+          <p>This is a preparedness prototype, not a live emergency alert or rescue service.</p>
+        </div>
+      </article>
+
+    </section>
+
+    
+    <!-- Editable Personal Emergency Plan -->
+    <section class="panel personal-plan-view" id="personal-plan-view" hidden>
+      <p class="eyebrow">YOUR PERSONAL PLAN</p>
+      <h2>Emergency Plan</h2>
+      <p class="panel-description">
+        Save essential information on this device for offline access.
+      </p>
+
+      <form id="personal-plan-form">
+        <h3>Emergency contact</h3>
+
+        <div class="plan-form-grid">
+          <label>
+            Contact name
+            <input id="contact-name" type="text" maxlength="100"
+              placeholder="Enter a name" />
+          </label>
+
+          <label>
+            Relationship
+            <input id="contact-relationship" type="text" maxlength="60"
+              placeholder="e.g. Family, friend" />
+          </label>
+
+          <label>
+            Phone number
+            <input id="contact-phone" type="tel" maxlength="30"
+              placeholder="Enter a phone number" />
+          </label>
+        </div>
+
+        <h3>Essential supplies</h3>
+        <p class="panel-description">Mark the supplies you have prepared.</p>
+
+        <div class="supply-list">
+          <label><input type="checkbox" name="supply" value="water" /> Drinking water</label>
+          <label><input type="checkbox" name="supply" value="first-aid" /> First-aid kit</label>
+          <label><input type="checkbox" name="supply" value="flashlight" /> Flashlight and batteries</label>
+          <label><input type="checkbox" name="supply" value="power-bank" /> Charged power bank</label>
+          <label><input type="checkbox" name="supply" value="documents" /> Essential documents identified</label>
+          <label><input type="checkbox" name="supply" value="medicines" /> Necessary medicines</label>
+        </div>
+
+        <h3>Preparedness notes</h3>
+        <label class="notes-label" for="plan-notes">
+          Important instructions or meeting arrangements
+        </label>
+        <textarea id="plan-notes" rows="5" maxlength="3000"
+          placeholder="Write notes you may need during an emergency..."></textarea>
+
+        <div class="backup-actions">
+          <button type="submit">Save Emergency Plan</button>
+        </div>
+
+        <p id="plan-status" role="status" aria-live="polite"></p>
+      </form>
+
+      
+        <div class="print-actions">
+        <button id="print-plan" type="button">Print Emergency Plan</button>
+        </div>
+
+      <p class="save-note">
+        Your plan is stored locally in this browser. It is not sent to a server.
+      </p>
+    </section>
+
+        
+<!-- NIRANTAR: Emergency Mode -->
+<section id="emergency-mode-view" class="emergency-mode-view" hidden>
+  <div class="emergency-mode-header">
+    <div>
+      <p class="emergency-eyebrow">NIRANTAR · QUICK ACCESS</p>
+      <h2>Emergency Mode</h2>
+      <p>Your saved information, in one place.</p>
+    </div>
+    <button id="exit-emergency-mode" type="button">
+      Exit Emergency Mode
+    </button>
+  </div>
+
+  <div class="emergency-notice" role="status">
+    Stay as calm as possible. Move away from immediate danger if you can
+    do so safely. Follow instructions from local emergency authorities.
+  </div>
+
+  <article class="emergency-card">
+    <h3>Emergency Contact</h3>
+    <p id="emergency-contact-name">No contact saved yet.</p>
+    <p id="emergency-contact-relationship"></p>
+    <a id="emergency-contact-phone" href="#" hidden>
+      Call saved contact
+    </a>
+    <p id="emergency-contact-missing">
+      Add a contact in Your Emergency Plan to see it here.
+    </p>
+  </article>
+
+  <article class="emergency-card">
+    <h3>Prepared Supplies</h3>
+    <ul id="emergency-supplies">
+      <li>No supplies marked as prepared yet.</li>
+    </ul>
+  </article>
+
+  <article class="emergency-card">
+    <h3>Saved Instructions</h3>
+    <p id="emergency-notes" class="emergency-notes">
+      No instructions saved yet.
+    </p>
+  </article>
+
+  <p class="emergency-footer">
+    This screen shows information saved on this device. Calls require a
+    working phone connection. Keep a paper copy of important information too.
+  </p>
+</section>
+
+
+<!-- NIRANTAR: Offline Emergency Guides -->
+<section id="emergency-guides-view" class="emergency-guides-view" hidden>
+  <div class="guides-header">
+    <div>
+      <p class="eyebrow">NIRANTAR · OFFLINE LIBRARY</p>
+      <h2>Emergency Guides</h2>
+      <p>Practical steps to help you prepare and respond more safely.</p>
+    </div>
+    <button id="close-emergency-guides" type="button">
+      Back to Dashboard
+    </button>
+  </div>
+
+  <label class="guides-search-label" for="guide-search">
+    Search emergency guides
+  </label>
+  <input
+    id="guide-search"
+    type="search"
+    placeholder="Try fire, power outage, first aid..."
+    autocomplete="off"
+  />
+
+  <div id="guide-list" class="guide-list" aria-live="polite"></div>
+
+  <article id="guide-detail" class="guide-detail" hidden>
+    <button id="back-to-guides" type="button">← All guides</button>
+    <p id="guide-category" class="eyebrow"></p>
+    <h3 id="guide-title"></h3>
+    <p id="guide-intro"></p>
+    <div id="guide-steps"></div>
+    <p class="guide-safety-note">
+      Safety first: conditions differ. Follow local emergency authorities
+      and trained responders. Do not put yourself in danger to help others.
+    </p>
+  </article>
+
+  <p class="guides-offline-note">
+    These guides are included with the app. They do not require an internet
+    connection after the app has been loaded and cached.
+  </p>
+</section>
+
+
+
+    <!-- Backup and Restore -->
+    <section class="backup-panel">
+      <h3>Backup your readiness data</h3>
+      <p>
+        Export your checklist progress or restore it from
+        a backup file. These actions work offline.
+      </p>
+
+      <div class="backup-actions">
+        <button id="export-backup" type="button">
+          Export Backup
+        </button>
+
+        <button id="import-backup" type="button">
+          Restore Backup
+        </button>
+
+        <input
+          id="backup-file"
+          type="file"
+          accept=".json,application/json"
+          hidden
+        />
+      </div>
+
+      <p id="backup-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <footer>NIRANTAR <span>•</span> Built for resilience, designed for continuity.</footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
