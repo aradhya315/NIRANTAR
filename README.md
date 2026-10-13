@@ -1,4 +1,4 @@
-# NIRANTAR — Offline-First Emergency Preparedness
+# NIRANTAR - Offline-First Emergency Preparedness
 
 > **When connectivity fails, preparedness shouldn't.**
 
