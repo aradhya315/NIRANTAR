@@ -1,4 +1,4 @@
-# NIRANTAR — Technical Design Document
+# NIRANTAR - Technical Design Document
 
 ## 1. Overview
 
