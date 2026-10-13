@@ -1,4 +1,4 @@
-# NIRANTAR — Manual Test Cases
+# NIRANTAR - Manual Test Cases
 
 ## 1. Purpose
 
